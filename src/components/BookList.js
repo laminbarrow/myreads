@@ -19,7 +19,6 @@ export default class BookList extends Component{
             </div>
             <div className="list-books-content">
               <div>
-                { console.log(listBooksByShelfName("currentlyReading"))}
                   <BookShelf title="Currently Reading" shelfBooks={listBooksByShelfName("currentlyReading")} />
                   <BookShelf title="Want to Read" shelfBooks={listBooksByShelfName("wantToRead")}/>
                   <BookShelf title="Read" shelfBooks={listBooksByShelfName("read")} />

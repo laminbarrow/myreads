@@ -18,7 +18,8 @@ export default class BookShelf extends Component {
                                     shelfBooks.map((book) => <BookShelfItem 
                                                     title={book.title} 
                                                     authors={book.authors} 
-                                                    thumbnail={book.imageLinks['thumbnail']} />
+                                                    thumbnail={book.imageLinks['thumbnail']}
+                                                    key={book.id} />
                                     ) 
                                 }
                             </ol>
