@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class SearchBar extends Component {
     render() {
-        const {toggleShowSearchPage} = this.props
+        //const {toggleShowSearchPage} = this.props
 
         return (
             <div className="search-books">
                 <div className="search-books-bar">
-                    <button className="close-search" onClick={toggleShowSearchPage}>Close</button>
+                    <Link className="close-search" to="/"> Close </Link>
                     <div className="search-books-input-wrapper">
                         {/*
                   NOTES: The search from BooksAPI is limited to a particular set of search terms.

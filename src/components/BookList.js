@@ -1,10 +1,12 @@
 import React, {Component} from "react"
 import BookShelf from "./BookShelf"
+import { Link } from 'react-router-dom';
+
 
 export default class BookList extends Component{
     
     render(){
-        const {toggleShowSearchPage, books} = this.props;
+        const { books } = this.props;
 
         const listBooksByShelfName = (name) => books.filter((item) => {
             return item.shelf === name
@@ -24,7 +26,7 @@ export default class BookList extends Component{
               </div>
             </div>
             <div className="open-search">
-              <button onClick={toggleShowSearchPage}>Add a book</button>
+              <Link to="/search" className='add-contact'> Add a book </Link>
             </div>
           </div>
         )
