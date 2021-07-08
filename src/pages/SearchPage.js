@@ -29,6 +29,20 @@ export default class SearchBar extends Component {
     render() {
 
         const {searchQuery,searchResults} = this.state;
+        let searchResultsMap;
+
+        if(searchQuery.length){
+            searchResultsMap = (searchResults.length > 0) ? searchResults.map((book) => <BookShelfItem 
+            title={book.title} 
+            authors={book.authors} 
+            thumbnail={book.imageLinks['thumbnail']}
+            key={book.id} />
+            ) 
+            :
+            <p>Your search did not return any results</p>
+          }else{
+            searchResultsMap = <p>Please enter your search terms above and the results will appear here</p>
+          }
 
         return (
             <div className="search-books">
@@ -54,13 +68,7 @@ export default class SearchBar extends Component {
                 <div className="search-books-results">
                     <ol className="books-grid">
                         {
-                          searchResults && 
-                          searchResults.map((book) => <BookShelfItem 
-                            title={book.title} 
-                            authors={book.authors} 
-                            thumbnail={book.imageLinks['thumbnail']}
-                            key={book.id} />
-                            ) 
+                         searchResultsMap
                         }
                     </ol>
                 </div>
