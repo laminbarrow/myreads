@@ -1,18 +1,24 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 
 export default class BookShelfItem extends Component {
-    state = {
-        currentValue: ''
+
+    static propTypes = {
+        book: PropTypes.object.isRequired,
     }
 
-    componentDidMount(){
+    state = {
+        currentValue: 'none'
+    }
+
+    componentDidMount() {
         this.setState({
             currentValue: this.props.book.shelf
         })
     }
 
-    handleUpdateBook(book, value){
-          this.setState(() => ({
+    handleUpdateBook(book, value) {
+        this.setState(() => ({
             currentValue: value
         }))
 
@@ -20,20 +26,21 @@ export default class BookShelfItem extends Component {
     }
 
     render() {
-        const {book} = this.props;
+        const { book } = this.props;
 
         return (
             <li>
                 <div className="book">
                     <div className="book-top">
-                        <div className="book-cover" 
-                        style={{ width: 128, 
-                                    height: 193,
-                                    background: book.imageLinks ?  `url(${book.imageLinks['thumbnail']})` : '#ccc'
-                                }}></div>
-                         <div className="book-shelf-changer">
-                            <select value={this.state.currentValue} 
-                            onChange={(event) => this.handleUpdateBook(book, event.target.value)}>
+                        <div className="book-cover"
+                            style={{
+                                width: 128,
+                                height: 193,
+                                background: book.imageLinks ? `url(${book.imageLinks['thumbnail']})` : '#ccc'
+                            }}></div>
+                        <div className="book-shelf-changer">
+                            <select value={this.state.currentValue}
+                                onChange={(event) => this.handleUpdateBook(book, event.target.value)}>
                                 <option value="move" disabled>Move to...</option>
                                 <option value="currentlyReading">Currently Reading</option>
                                 <option value="wantToRead">Want to Read</option>
@@ -43,14 +50,12 @@ export default class BookShelfItem extends Component {
                         </div>
                     </div>
                     <div className="book-title">{book.title}</div>
-                   
+
                     <div className="book-authors">
                         {
-                            book.authors.join(', ')
+                            book.authors && book.authors.join(', ')
                         }
                     </div>
-                    
-                  
                 </div>
             </li>
         )
