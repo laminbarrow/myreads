@@ -9,6 +9,10 @@ export default class SearchBar extends Component {
         searchResults: []
     }
 
+    updateBook = (book, shelf) => {
+        BooksAPI.update(book,shelf).catch(err => { console.log(err) })
+    }
+    
     submitSearchQuery(query){
         //set query state
         this.setState(() => ({
@@ -33,9 +37,8 @@ export default class SearchBar extends Component {
 
         if(searchQuery.length){
             searchResultsMap = (searchResults.length > 0) ? searchResults.map((book) => <BookShelfItem 
-            title={book.title} 
-            authors={book.authors} 
-            thumbnail={book.imageLinks['thumbnail']}
+            book={book} 
+            updateBook={this.updateBook}
             key={book.id} />
             ) 
             :
