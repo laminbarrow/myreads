@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class BookShelfItem extends Component {
     state = {
-        currentValue: 'none'
+        currentValue: ''
     }
 
     componentDidMount(){
