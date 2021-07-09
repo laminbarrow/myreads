@@ -10,7 +10,6 @@ export default class BookList extends Component{
 
   getBooks(){
     BooksAPI.getAll().then((books) => {
-      console.log(books)
       this.setState(() => ({
         books
       }))

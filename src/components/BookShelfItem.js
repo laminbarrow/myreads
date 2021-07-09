@@ -28,8 +28,8 @@ export default class BookShelfItem extends Component {
                     <div className="book-top">
                         <div className="book-cover" 
                         style={{ width: 128, 
-                                    height: 193, 
-                                    backgroundImage: `url(${book.imageLinks['thumbnail']}})` 
+                                    height: 193,
+                                    background: book.imageLinks ?  `url(${book.imageLinks['thumbnail']})` : '#ccc'
                                 }}></div>
                          <div className="book-shelf-changer">
                             <select value={this.state.currentValue} 
