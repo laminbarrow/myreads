@@ -24,18 +24,20 @@ export default class SearchBar extends Component {
     }));
 
     //make sure that we have at-least 1 character in the search value before sending the query
-    if (query.length >= 1 && this.state.searchQuery) {
+    if (this.state.searchQuery) {
       BooksAPI.search(this.state.searchQuery)
         .then((searchResults) => {
-
           let computerSearchResults = [];
-          //go through the results and add a shelf to items that already exist in the books props
-          const currentBooksInShelf = this.props.books;
-          computerSearchResults = searchResults && searchResults.map((book) => {
-            let bookInShelf = currentBooksInShelf.find((bookInShelf) => bookInShelf.id === book.id)
-            book.shelf = bookInShelf ? bookInShelf.shelf : "none"
-            return book
-          })
+          if (searchResults.length > 0) {
+            //go through the results and add a shelf to items that already exist in the books props
+            const currentBooksInShelf = this.props.books;
+            computerSearchResults = searchResults.map((book) => {
+              let bookInShelf = currentBooksInShelf.find((bookInShelf) => bookInShelf.id === book.id)
+              book.shelf = bookInShelf ? bookInShelf.shelf : "none"
+              return book
+            })
+          }
+
 
           this.setState(() => ({
             searchResults: computerSearchResults
