@@ -76,8 +76,7 @@ export default class SearchBar extends Component {
       <div className="search-books">
         <div className="search-books-bar">
           <Link className="close-search" to="/">
-            {" "}
-            Close{" "}
+            Close
           </Link>
           <div className="search-books-input-wrapper">
             {/*
